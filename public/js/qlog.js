@@ -88,6 +88,12 @@ function calc_load_time()
         return 66000 - current_seconds;
 }
 
+/*******************************
+*function: jsonをlogに追加する
+*parametor: json
+*return: TimeString
+*note: 
+*******************************/
 function insert_json(json)
     {
         for(var i = 0; i < json.length; i++)
@@ -122,13 +128,13 @@ function insert_json(json)
 
                 // 10秒毎にlogに追加する
                 // setTimeoutはクロージャーで変数を保持しながらセットしていく
-                (function(elem,for_timeout)
+                (function(insert_element,for_timeout)
                     {
                         if (for_timeout == 4) 
                             {
                                 setTimeout(function()
                                      {
-                                          insert_log(elem);
+                                          insert_log(insert_element);
                                           setTimeout("load_javascript()",
                                               calc_load_time());
                                      },
@@ -138,7 +144,7 @@ function insert_json(json)
                             {
                                 setTimeout(function()
                                     {
-                                        insert_log(elem);
+                                        insert_log(insert_element);
                                     },
                                     10000*(for_timeout+1));
                             }
