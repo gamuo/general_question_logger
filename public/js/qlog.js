@@ -29,10 +29,10 @@ function update_server_message()
     {
 
         var span = document.getElementById('server_message_text');
-        
+
         var request_text = 'server request...';
         var wait_text = 'waiting for data...';
-        
+
         // 一時的にメッセージを変更        
         span.innerText = request_text;
         // 元に戻すためのメッセージを変更
@@ -88,6 +88,22 @@ function calc_load_time()
         return 66000 - current_seconds;
 }
 
+/***********************************************
+*function: 行数に応じて、行数のWidthを変更する
+*parametor: None
+*return: None
+*note:
+***********************************************/
+function set_width_row_number() 
+    {
+        var digit = String(log_row_number).length
+        var width = 20 + (10 * digit)
+
+        // <head>の<style></style>の一番目を取得
+        var style = document.styleSheets[0].cssRules[0].style;
+        style.setProperty('width', width + 'px');
+    }
+
 /*******************************
 *function: jsonをlogに追加する
 *parametor: json
@@ -100,6 +116,8 @@ function insert_json(json)
             {
                 // 行数を追加
                 log_row_number += 1;
+                // 行数のwidthを変更
+                set_width_row_number();
 
                 // logに追加するデータ
                 var row_number     = log_row_number,

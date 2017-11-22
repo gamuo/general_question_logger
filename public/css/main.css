@@ -22,13 +22,6 @@ body {
     width: 100%;
 }
 
-#log .log_row_number {
-    display: inline-block;
-    width: 40px;
-    margin-left: 15px;
-    color: #2F61A4;
-}
-
 #log .question_href {
     color: white;
     font-size: 15px;
