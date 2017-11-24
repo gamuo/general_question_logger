@@ -51,7 +51,7 @@ function load_javascript()
 
         var script     = document.createElement('script');
         script.charset = 'utf-8';
-        script.src     = 'http://www.geocities.jp/nice_popcorn/log.js';
+        script.src     = 'http://www.geocities.jp/nice_popcorn/qlog.js';
 
         document.body.appendChild(script);
     }
