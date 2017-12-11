@@ -54,6 +54,9 @@ function load_javascript()
         script.src     = 'http://www.geocities.jp/nice_popcorn/qlog.js';
 
         document.body.appendChild(script);
+
+        var date = new Date();
+        console.log('javascriptがロードされました:' + date);
     }
 
 
@@ -61,7 +64,7 @@ function load_javascript()
 *function: (10 x N+1)秒後を取得する
 *parametor: Number
 *return: TimeString
-*note: １０秒づつに処理するため
+*note: time_stump用
 ************************************/
 function calc_after_seconds(n)
     {
@@ -85,8 +88,10 @@ function calc_load_time()
         var date = new Date;
         var current_seconds = ("0"+date.getSeconds()).slice(-2)+"000";
 
+        // 66秒 - 現在の秒数(例: 56秒だったら、10秒後にロードする)
+        console.log(66000 - current_seconds);
         return 66000 - current_seconds;
-}
+    }
 
 /***********************************************
 *function: 行数に応じて、行数のWidthを変更する
@@ -145,7 +150,7 @@ function insert_json(json)
                 div.append(span_2);
 
                 // 10秒毎にlogに追加する
-                // setTimeoutはクロージャーで変数を保持しながらセットしていく
+                // setTimeoutはクロージャーでforループの変数を保持しながらセットしていく
                 (function(insert_element,for_timeout)
                     {
                         if (for_timeout == 4) 
